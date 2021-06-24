@@ -1,5 +1,7 @@
 # Setup
 
-> php artisan install
-> php artisan key:generate
+> composer install
+
 > cp .env.example .env
+
+> php artisan key:generate
