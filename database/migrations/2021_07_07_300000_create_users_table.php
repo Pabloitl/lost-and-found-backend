@@ -26,8 +26,9 @@ class CreateUsersTable extends Migration
             $table->integer('usuarioCreacion');
             $table->integer('usuarioActualizacion');
             $table->boolean('borrado')->nullable(false);
-            $table->timestamp('fechaBorrado');
-            $table->timestamps();
+            $table->timestamp('fechaBorrado')->nullable();
+            $table->timestamp('fechaCreacion');
+            $table->timestamp('fechaActualizacion')->nullable();
             /* $table->rememberToken(); */
 
             $table->foreign('fkCarrera')->references('pkCarrera')->on('Carrera');
