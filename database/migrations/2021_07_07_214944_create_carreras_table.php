@@ -20,7 +20,7 @@ class CreateCarrerasTable extends Migration
             $table->integer('usuarioActualizacion');
             $table->boolean('borrado')->nullable(false);
             $table->timestamp('fechaBorrado')->nullable();
-            $table->timestamp('fechaCreacion');
+            $table->timestamp('fechaCreacion')->nullable();
             $table->timestamp('fechaActualizacion')->nullable();
         });
     }

@@ -21,7 +21,7 @@ class CreateCampusesTable extends Migration
             $table->integer('usuarioActualizacion');
             $table->boolean('borrado')->nullable(false);
             $table->timestamp('fechaBorrado')->nullable();
-            $table->timestamp('fechaCreacion');
+            $table->timestamp('fechaCreacion')->nullable();
             $table->timestamp('fechaActualizacion')->nullable();
 
             $table->foreign('fkCiudad')->references('pkCiudad')->on('Ciudad');
