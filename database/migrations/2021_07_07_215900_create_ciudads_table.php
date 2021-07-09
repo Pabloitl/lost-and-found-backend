@@ -17,8 +17,8 @@ class CreateCiudadsTable extends Migration
             $table->id('pkCiudad');
             $table->string('nombre', 250)->nullable(false);
             $table->string('entidadFederativa', 80)->nullable(false);
-            $table->integer('usuarioCreacion');
-            $table->integer('usuarioActualizacion');
+            $table->integer('usuarioCreacion')->nullable();
+            $table->integer('usuarioActualizacion')->nullable();
             $table->boolean('borrado')->nullable(false);
             $table->timestamp('fechaBorrado')->nullable();
             $table->timestamp('fechaCreacion')->nullable();

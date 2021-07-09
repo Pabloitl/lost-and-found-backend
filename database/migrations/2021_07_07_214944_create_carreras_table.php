@@ -16,8 +16,8 @@ class CreateCarrerasTable extends Migration
         Schema::create('Carrera', function (Blueprint $table) {
             $table->id('pkCarrera');
             $table->string('nombre', 250)->nullable(false);
-            $table->integer('usuarioCreacion');
-            $table->integer('usuarioActualizacion');
+            $table->integer('usuarioCreacion')->nullable();
+            $table->integer('usuarioActualizacion')->nullable();
             $table->boolean('borrado')->nullable(false);
             $table->timestamp('fechaBorrado')->nullable();
             $table->timestamp('fechaCreacion')->nullable();

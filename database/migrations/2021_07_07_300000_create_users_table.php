@@ -17,14 +17,14 @@ class CreateUsersTable extends Migration
             $table->id('pkUsuario');
             $table->string('nombre', 50)->nullable(false);
             $table->string('apellido')->nullable(false);
-            $table->string('fotoDePerfil', 100);
+            $table->string('fotoDePerfil', 100)->nullable();
             $table->string('correoElectronico', 100)->nullable(false);
             $table->string('contrasena', 30)->nullable(false);
             $table->string('nombreDeUsuario', 15)->nullable(false);
             $table->foreignId('fkCarrera')->nullable(false);
             $table->foreignId('fkCampus')->nullable(false);
-            $table->integer('usuarioCreacion');
-            $table->integer('usuarioActualizacion');
+            $table->integer('usuarioCreacion')->nullable(false);
+            $table->integer('usuarioActualizacion')->nullable();
             $table->boolean('borrado')->nullable(false);
             $table->timestamp('fechaBorrado')->nullable();
             $table->timestamp('fechaCreacion')->nullable();
