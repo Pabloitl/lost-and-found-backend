@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
+/* use Illuminate\Contracts\Auth\MustVerifyEmail; */
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -11,15 +11,28 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    protected $table = 'Usuario';
+
+    const CREATED_AT = 'fechaCreacion';
+    const UPDATED_AT = 'fechaActualizacion';
+
+    protected $primaryKey = 'pkUsuario';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'nombre',
+        'apellido',
+        'fotoDePerfil',
+        'correoElectronico',
+        'contrasena',
+        'nombreDeUsuario',
+        'usuarioCreacion',
+        'usuarioActualizacion',
+        'borrado',
+        'fechaBorrado',
     ];
 
     /**
@@ -28,8 +41,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password',
-        'remember_token',
     ];
 
     /**
@@ -38,6 +49,18 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'fechaCreacion' => 'datetime',
+        'fechaActualizacion' => 'datetime',
+        'fechaBorrado' => 'datetime',
     ];
+
+    public function carrera()
+    {
+        return $this->belongsTo(Carrera::class, 'fkCarrera', 'pkCarrera');
+    }
+
+    public function campus()
+    {
+        return $this->belongsTo(Campus::class, 'fkCampus', 'pkCampus');
+    }
 }
