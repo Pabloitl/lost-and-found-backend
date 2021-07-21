@@ -7,6 +7,7 @@ use App\Models\Carrera;
 use App\Models\Ciudad;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -28,12 +29,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // curl -X POST -F 'nombre=test' -F 'apellido=test' -F 'correoElectronico=test@test.com' -F 'contrasena=password' -F 'nombreDeUsuario=test' -F 'fotoDePerfil=@' localhost:8000/api/usuarios/
+        // curl -X POST -F 'nombre=test' -F 'apellido=test' -F 'correoElectronico=test@test.com' -F 'contrasena=aA1&saonteuhh' -F 'nombreDeUsuario=test' -F 'fotoDePerfil=@/home/arch/Wallpapers/germany.jpg' localhost:8000/api/usuarios/
 
         // TODO: Validacion del captcha
-        $request->validate([
-            'fotoDePerfil' => 'required'
+        $validator = Validator::make($request->all(), [
+            'nombre' => 'required|alpha|min:2|max:50',
+            'apellido' => 'required|alpha|min:2|max:50',
+            'correoElectronico' => 'required|unique:Usuario',
+            'contrasena' => 'required|min:8|max:30|regex:/[&@$!%*#?]/|regex:/[0-9]/|regex:/[A-Z]/',
+            'nombreDeUsuario' => 'required|alpha_num|min:3|max:15|unique:Usuario'
         ]);
+
+        if ($validator->fails())
+        {
+            return $validator->errors()->jsonSerialize();
+        }
 
         // TODO: Borrar creacion de otros modelos
         $carrera_datos = ['nombre' => 'carrera', 'borrado' => false];
