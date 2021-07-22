@@ -29,7 +29,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // curl -X POST -F 'nombre=test' -F 'apellido=test' -F 'correoElectronico=test@test.com' -F 'contrasena=aA1&saonteuhh' -F 'nombreDeUsuario=test' -F 'fotoDePerfil=@/home/arch/Wallpapers/germany.jpg' localhost:8000/api/usuarios/
+        // curl -X POST -F 'nombre=test' -F 'apellido=test' -F 'correoElectronico=test@test.com' -F 'contrasena=aA1&saonteuhh' -F 'nombreDeUsuario=test' -F 'fotoDePerfil=@/foto.jpg' localhost:8000/api/usuarios/
 
         // TODO: Validacion del captcha
         $validator = Validator::make($request->all(), [
